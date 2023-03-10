@@ -12,15 +12,13 @@ terraform {
   }
 }
 
-/*
 terraform {
   backend "s3" {
-    bucket = "dmitry-yemelin-project-terraform-state" // Bucket where to SAVE Terraform State
-    key    = "dev/network/terraform.tfstate"          // Object name in the bucket to SAVE Terraform State
-    region = "us-east-2"                              // Region where bycket created
+    bucket = "dy-eks-cluster-terraform-state" // Bucket where to SAVE Terraform State
+    key    = "dev/eks/terraform.tfstate"      // Object name in the bucket to SAVE Terraform State
+    region = "us-east-2"                      // Region where bycket created
   }
 }
-*/
 
 /*
 module "vpc" {

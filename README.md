@@ -13,6 +13,24 @@ export AWS_ACCESS_KEY_ID="insert your AWS access key ID"
 export AWS_SECRET_ACCESS_KEY="insert your AWS access key"
 ```
 
-4. terraform init
-5. teraform plan
-6. terraform apply
+Create S3 bucket where remote state should be stored
+Update values in provider.tf file with proper details
+
+terraform init
+teraform plan
+terraform apply
+
+After succesful creation to configure your local kubectl setup run the following command.
+
+```
+aws eks --region us-east-2 update-kubeconfig --name demo
+```
+
+region, where you setup your EKS cluster
+name - name of the EKS cluster
+
+and finally run to test connectivity to the kubernetes cluster in EKS
+
+```
+kubectl get svc
+```

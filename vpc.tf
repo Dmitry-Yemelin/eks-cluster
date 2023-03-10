@@ -7,6 +7,7 @@ resource "aws_vpc" "main" {
   }
 }
 
+## Internet Gateway section
 resource "aws_internet_gateway" "igw" {
   vpc_id = aws_vpc.main.id
 
@@ -15,6 +16,7 @@ resource "aws_internet_gateway" "igw" {
   }
 }
 
+## Subnets section (public and private)
 resource "aws_subnet" "private-us-east-2a" {
   vpc_id            = aws_vpc.main.id
   cidr_block        = "10.0.0.0/19"
@@ -65,6 +67,7 @@ resource "aws_subnet" "public-us-east-2b" {
   }
 }
 
+## NAT Gateway for private subnets
 resource "aws_eip" "nat" {
   vpc = true
 

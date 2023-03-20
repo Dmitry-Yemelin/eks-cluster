@@ -31,7 +31,28 @@ spec:
               path: /
               port: web
             initialDelaySeconds: 30
-            periodSeconds: 3
+            failureThreshold: 2
+            periodSeconds: 5
+          startupProbe:
+            httpGet:
+              path: /
+              port: web
+            initialDelaySeconds: 20
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /
+              port: web
+            failureThreshold: 2
+            periodSeconds: 10
+          volumeMounts:
+            - name: config
+              subPath: message
+              mountPath: /etc/message.txt
+      volumes:
+        - name: config
+          configMap:
+            name: config
       affinity:
         nodeAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:

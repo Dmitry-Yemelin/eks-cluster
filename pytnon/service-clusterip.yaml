@@ -5,10 +5,10 @@ metadata:
   name: my-service
   namespace: default
 spec:
+  type: ClusterIP
   selector:
     app: pythonmain
   ports:
-    - name: http
-      port: 80
-      targetPort: 8080
-  type: ClusterIP
+    - port: 8080
+      targetPort: web
+  

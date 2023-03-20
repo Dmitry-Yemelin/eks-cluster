@@ -20,31 +20,3 @@ terraform {
   }
 }
 
-/*
-module "vpc" {
-  source = "./vpc"
-  region = var.region
-}
-
-module "eks" {
-  source = "./eks"
-  region = var.region
-  vpc_id = module.vpc.vpc_id
-  subnets = module.vpc.private_subnets
-}
-
-module "key_pair" {
-  source = "./key_pair"
-}
-
-module "security_groups" {
-  source = "./security_groups"
-  vpc_id = module.vpc.vpc_id
-  eks_cluster_sg_name = module.eks.eks_cluster_sg_name
-  eks_node_sg_name = module.eks.eks_node_sg_name
-}
-
-output "kubeconfig" {
-  value = module.eks.kubeconfig
-}
-*/

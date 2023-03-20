@@ -34,3 +34,17 @@ and finally run to test connectivity to the kubernetes cluster in EKS
 ```
 kubectl get svc
 ```
+
+kubectl apply -f k8s/aws-test.yaml - to add ServiceAccount with name: aws-test and verify that pod can start and able to access s3 buckets in the AWS account
+kubectl exec aws-cli -- aws s3api list-buckets - run command inside a pod verifying that ServicAccount created correctly and S3 access policy is assigned.
+
+kubectl apply -f k8s/deployment.yaml - test nginx deployment
+kubectl apply -f k8s/public-lb.yaml - test public-lb (nlb) to access that nginx deployment
+
+After tests you may delete kubernetes deployments and pods.
+kubectl delete deployment nginx
+kubectl delete deployment busylab
+kubectl delete svc public-lb
+
+Then delete infrastructure
+terraform destroy
